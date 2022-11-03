@@ -39,7 +39,7 @@ Lets look at a list
 ```{r}
 l = list(
   vec_numeric = 5:8,
-  mat         = matrix(1:8, 2, 4),
+  mat         = matrix(1:8, nrow = 2, ncol = 4),
   vec_logical = c(TRUE, FALSE),
   summary     = summary(rnorm(1000))
 )
@@ -103,7 +103,7 @@ mean_and_sd(list_norm[[3]])
 mean_and_sd(list_norm[[4]])
 ```
 
-Let's a `for` loop instead.
+Let's use a `for` loop instead.
 
 ```{r}
 output = vector("list", length = 4)
@@ -136,7 +136,7 @@ map variants ...
 ```{r}
 map_dbl(list_norm, median)
 
-output = map_df(list_norm, mean_and_sd)
+output = map_df(list_norm, mean_and_sd, .id = "input")
 ```
 
 
