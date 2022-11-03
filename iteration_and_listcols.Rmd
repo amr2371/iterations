@@ -190,7 +190,10 @@ let's nest within weather stations...
 ```{r}
 weather_nest_df = 
   weather_df %>% 
-  nest(data = date:tmin)
+  nest(data = date:tmin) # "nests" the columns from date to tmin
+
+weather_nest_df %>% pull(data)
+weather_nest_df$data[[3]]
 ```
 
 Really is a list column!
@@ -198,6 +201,9 @@ Really is a list column!
 ```{r}
 weather_nest_df[["data"]]
 ```
+
+
+Suppose I want to regress `tmax` on `tmin` for each station..
 
 ```{r}
 weather_nest_df[["data"]][[1]]
